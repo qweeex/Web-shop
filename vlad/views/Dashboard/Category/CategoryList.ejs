@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <title><%=title %></title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Админ Панель</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="/dashboard">Заказы</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/dashboard/category">Категории</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/dashboard/products">Товары</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-xl-auto">
+            <a href="">
+                <button class="btn btn-primary">Добавить категорию</button>
+            </a>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <% if (category) { %>
+            <% for (let i = 0; i < category.length; i++) { %>
+                <div class="col-xl-4 mb-4">
+                    <div class="card" >
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <%= category[i].category_name %>
+                            </h5>
+                            <p class="card-text">
+                                <%= category[i].category_desc %>
+                            </p>
+                            <a href="/dashboard/category/change/<%= category[i].id %>" class="btn btn-warning">Редактировать</a>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+        <% } %>
+    </div>
+</div>
+</body>
+</html>
